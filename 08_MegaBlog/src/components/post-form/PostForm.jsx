@@ -42,13 +42,16 @@ export default function PostForm({post}) {
                 navigate(`/post/${dbPost.$id}`);
             }
         } else {
-            const file = await appwriteService.uploadFile(data.image[0]);
+            
+            const file = data.image && data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null;
 
             if (file) {
-                const fileId = file.$id;
-                data.featuredImage = fileId;
-                const dbPost = await appwriteService.createPost({  ...data, userId: userData.$id });
+                // const fileId = file.$id;
+                const fileId = file ? file.$id : undefined;
 
+                data.featuredImage = fileId;
+                // const dbPost = await appwriteService.createPost({  ...data, userId: userData.$id });
+                const dbPost = await appwriteService.updatePost(post?.$id, { ...data, featuredImage: file ? fileId : undefined });
                 if (dbPost) {
                     navigate(`/post/${dbPost.$id}`);
                 }

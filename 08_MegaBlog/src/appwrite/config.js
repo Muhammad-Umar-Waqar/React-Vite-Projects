@@ -37,22 +37,39 @@ export class Service{
 
     async updatePost(slug, {title, content, featuredImage, status}){
         try {
-            return await this.databases.updateDocument(
+            // Fetch the document based on the slug
+            const document = await this.databases.listDocuments(
+              conf.appwriteDatabaseId,
+              conf.appwriteCollectionId,
+              undefined,
+              undefined,
+              undefined,
+              `slug=${slug}`
+            );
+        
+            if (document.documents.length > 0) {
+              const documentId = document.documents[0].$id;
+        
+              // Update the document using the retrieved documentId
+              return await this.databases.updateDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                slug,
+                documentId,
                 {
-                    title,
-                    content,
-                    featuredImage,
-                    status,
-
+                  title,
+                  content,
+                  featuredImage,
+                  status,
                 }
-            )
-        } catch (error) {
-            console.log("Appwrite serive :: updatePost :: error", error);
+              );
+            } else {
+              throw new Error(`Document not found for slug: ${slug}`);
+            }
+          } catch (error) {
+            console.error("Appwrite serive :: updatePost :: error", error);
+            throw error;
+          }
         }
-    }
 
     async deletePost(slug){
         try {
@@ -130,7 +147,7 @@ export class Service{
         return this.bucket.getFilePreview(
             conf.appwriteBucketId,
             fileId
-        )
+        ).href
     }
 }
 

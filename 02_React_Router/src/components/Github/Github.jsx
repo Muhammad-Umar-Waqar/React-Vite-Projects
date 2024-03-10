@@ -3,7 +3,9 @@ import { useLoaderData } from 'react-router-dom'
 
 
 function Github() {
-  const data = useLoaderData()
+const data = useLoaderData()
+
+
 //     const [data, setData] = useState([])
 //     useEffect(()=>{
 // fetch("https://api.github.com/users/hiteshchoudhary")
@@ -13,6 +15,8 @@ function Github() {
 //   setData(data)
 // })
 //     }, [])
+
+
 console.log(data)
   return (
     <>
@@ -21,7 +25,7 @@ console.log(data)
       <h1 className='text-center bg-gray-600'>{data.name}</h1>
       
     
-    <img  style={{"height": 300, padding: 5  }} className='m-auto rounded-xl' src={data.avatar_url} alt="" />
+    <img  style={{"height": 300, padding: 5 }} className='m-auto rounded-xl' src={data.avatar_url} alt="" />
     <div className='bg-gray-600'>
     Github Followers: {data.followers}
     </div>
