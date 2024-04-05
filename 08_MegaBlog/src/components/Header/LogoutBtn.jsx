@@ -10,7 +10,7 @@ function LogoutBtn() {
 const navigate = useNavigate()
     const dispatch = useDispatch();
 const logoutHandler = () =>{
-    authService.logout().then(()=>{df
+    authService.logout().then(()=>{
         dispatch(logout())
         navigate('/login')
     })

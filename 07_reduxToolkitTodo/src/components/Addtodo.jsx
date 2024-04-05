@@ -9,7 +9,7 @@ function AddTodo() {
 
   const addTodoHandler = (e) => {
     e.preventDefault();
-
+                    
     if (input.trim() !== '') {
       // Dispatch the addTodo action with the input value
       dispatch(addTodo(input));
@@ -27,11 +27,11 @@ function AddTodo() {
         placeholder="Enter a Todo..."
         value={input}
         onChange={(e) => setInput(e.target.value)}
-      />
+       />
       <button
         type="submit"
         className={`text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg ${
-          input.trim() === '' ? 'cursor-not-allowed opacity-50' : '' // Disable button if input is empty
+          input.trim() === '' ? 'cursor-allowed opacity-50' : '' // Disable button if input is empty
         }`}
         disabled={input.trim() === ''} // Disable button if input is empty
       >

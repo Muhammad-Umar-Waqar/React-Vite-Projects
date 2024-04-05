@@ -26,7 +26,7 @@ useEffect(()=>{
   
 
   return !loading ? (
-    <div className="min-h-screen flex-wrap content-betwen bg-gray-400">
+    <div className="min-h-screen min-w-screen p-0 m-0 flex-wrap content-betwen bg-gray-400">
       <div className="w-full block">
         <Header/>
         <main>

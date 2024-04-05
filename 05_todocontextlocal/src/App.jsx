@@ -25,7 +25,6 @@ function App() {
     // console.log(toggleComplete)
     setTodos((prev) => 
     prev.map((prevTodo) => 
-
       prevTodo.id === id ? { ...prevTodo, 
         completed: !prevTodo.completed } : prevTodo))
   }
@@ -41,9 +40,6 @@ function App() {
       localStorage.setItem("todos", JSON.stringify(todos))
   },[todos])
   
-
-  
-
 
   return (
     <Todoprovider value= {{todos, addTodo, updateTodo, deleteTodo, toggleComplete}} >

@@ -23,7 +23,7 @@ if (posts.length === 0) {
                 <div className="flex flex-wrap">
                     <div className="p-2 w-full">
                         <h1 className="text-2xl font-bold hover:text-gray-500">
-                            Login to read posts
+                            Start Creating your Posts
                         </h1>
                     </div>
                 </div>
@@ -31,6 +31,7 @@ if (posts.length === 0) {
         </div>
     )
 }
+
 return (
     <div className='w-full py-8'>
         <Container>
