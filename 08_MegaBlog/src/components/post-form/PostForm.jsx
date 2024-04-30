@@ -30,7 +30,7 @@ function PostForm({post}) {
                 if (file) {
                     const fileId = file.$id;
                     data.featuredImage = fileId; // Assign the fileId directly, no need for await here
-                    const dbPost = await appwriteService.updatePost(post.$id, { ...data });
+                    const dbPost = await appwriteService.updatePost(post.$id, { ...data }, {userId: userData?.$id});
     
                     if (dbPost) {
                         navigate('/');
